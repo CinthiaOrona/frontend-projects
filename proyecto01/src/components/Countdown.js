@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { BsStopwatch } from 'react-icons/bs'
 
 const Countdown = () => {
     const [time, setTime] = useState(0);
@@ -6,7 +7,8 @@ const Countdown = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            setTime(time + 1000);
+            setTime(time + 1000);  //Count till page is first loaded
+            //setTime(time - 1000); //Count if running in background
         }, 10);
     }, [time]);
 
@@ -19,12 +21,12 @@ const Countdown = () => {
         let minutes = parseInt(total_minutes % 60);
         let hours = parseInt(total_hours % 24);
 
-        return `${hours}:${minutes}:${seconds}`;
+        return `${hours}:${minutes}:${seconds} [${miliseconds}]`;
     };
 
     return (
         <div className='stopwatch-time'>
-        {getTimeFormatted(time)}
+            <BsStopwatch/> {getTimeFormatted(time)}            
         </div>
     )
 }

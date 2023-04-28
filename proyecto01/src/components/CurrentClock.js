@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { BsClock } from 'react-icons/bs'
 
 
 const CurrentClock = () => {
@@ -28,7 +29,7 @@ const CurrentClock = () => {
     return (
         <section>
             <div className='stopwatch-time'>
-                {TickFormatted()}
+                <BsClock/> {TickFormatted()}
             </div>
         </section>
     )

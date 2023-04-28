@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { GiStopwatch } from "react-icons/gi";
 
 
 const Cronometer = () => {
@@ -41,7 +42,7 @@ const Cronometer = () => {
     return (
         <div className="stopwatch-container">
             <p className="stopwatch-time">
-                {hours}:{minutes.toString().padStart(2, "0")}:
+                <GiStopwatch/> {hours}:{minutes.toString().padStart(2, "0")}:
                 {seconds.toString().padStart(2, "0")}:
                 {milliseconds.toString().padStart(2, "0")}
             </p>

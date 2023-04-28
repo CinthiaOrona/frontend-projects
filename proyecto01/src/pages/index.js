@@ -16,7 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main}`}>
-        <Suspense>
+        <Suspense >
           <Countdown duration={60 * 60 * 1000} />
           <CurrentClock />
           <Cronometer />
