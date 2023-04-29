@@ -4,6 +4,8 @@ import { BsClock } from 'react-icons/bs'
 
 const CurrentClock = () => {
     const [time, setTime] = useState(0);
+    const [loading, setLoading] = useState(true);
+
 
     function TickFormatted() {
         const time = new Date();
@@ -21,6 +23,7 @@ const CurrentClock = () => {
 
 
     useEffect(() => {
+        setLoading(false);
         setTimeout(() => {
             setTime(time - 1000);
         }, 10);
@@ -28,9 +31,11 @@ const CurrentClock = () => {
 
     return (
         <section>
-            <div className='stopwatch-time'>
-                <BsClock/> {TickFormatted()}
-            </div>
+            {loading ? 'Loading...' :
+                <div className='stopwatch-time'>
+                    <BsClock /> {TickFormatted()}
+                </div>
+            }
         </section>
     )
 }

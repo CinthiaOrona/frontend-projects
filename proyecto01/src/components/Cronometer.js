@@ -5,11 +5,13 @@ import { GiStopwatch } from "react-icons/gi";
 const Cronometer = () => {
     // state to store time
     const [time, setTime] = useState(0);
+    const [loading, setLoading] = useState(true);
 
     // state to check stopwatch running or not
     const [isRunning, setIsRunning] = useState(false);
 
     useEffect(() => {
+        setLoading(false);
         let intervalId;
         if (isRunning) {
             // setting time from 0 to 1 every 10 milisecond using javascript setInterval method
@@ -40,21 +42,25 @@ const Cronometer = () => {
         setTime(0);
     };
     return (
-        <div className="stopwatch-container">
-            <p className="stopwatch-time">
-                <GiStopwatch/> {hours}:{minutes.toString().padStart(2, "0")}:
-                {seconds.toString().padStart(2, "0")}:
-                {milliseconds.toString().padStart(2, "0")}
-            </p>
-            <div className="stopwatch-buttons">
-                <button className="stopwatch-button" onClick={startAndStop}>
-                    {isRunning ? "Stop" : "Start"}
-                </button>
-                <button className="stopwatch-button" onClick={reset}>
-                    Reset
-                </button>
+        <>
+            {loading ? 'Loading...' : <div className="stopwatch-container">
+                <p className="stopwatch-time">
+                    <GiStopwatch /> {hours}:{minutes.toString().padStart(2, "0")}:
+                    {seconds.toString().padStart(2, "0")}:
+                    {milliseconds.toString().padStart(2, "0")}
+                </p>
+                <div className="stopwatch-buttons">
+                    <button className="stopwatch-button" onClick={startAndStop}>
+                        {isRunning ? "Stop" : "Start"}
+                    </button>
+                    <button className="stopwatch-button" onClick={reset}>
+                        Reset
+                    </button>
+                </div>
             </div>
-        </div>
+            }
+        </>
+
     );
 };
 

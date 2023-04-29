@@ -3,6 +3,7 @@ import { BsStopwatch } from 'react-icons/bs'
 
 const Countdown = () => {
     const [time, setTime] = useState(0);
+    const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
@@ -10,6 +11,8 @@ const Countdown = () => {
             setTime(time + 1000);  //Count till page is first loaded
             //setTime(time - 1000); //Count if running in background
         }, 10);
+        setLoading(false);
+
     }, [time]);
 
     const getTimeFormatted = (miliseconds) => {
@@ -25,9 +28,15 @@ const Countdown = () => {
     };
 
     return (
-        <div className='stopwatch-time'>
-            <BsStopwatch/> {getTimeFormatted(time)}            
-        </div>
+        <>
+
+            <div className='stopwatch-time'>
+                {loading ? 'Loading...' : ``}
+                <BsStopwatch /> {getTimeFormatted(time)}
+            </div>
+
+        </>
+
     )
 }
 
